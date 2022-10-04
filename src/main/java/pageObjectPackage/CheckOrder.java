@@ -5,19 +5,13 @@ import org.openqa.selenium.*;
 public class CheckOrder {
     private WebDriver driver;
 
-    public By getOrderUp() {
-        return orderUp;
-    }
+
 
     //локатор "Заказать" вверху страницы
     private By orderUp = By.xpath(".//button[text()='Заказать']");
 
-    public By getOrderDown() {
-        return orderDown;
-    }
-
-    //локаторы "Заказать" внизу страницы
-    private By orderDown = By.xpath(".//div[@class='Order_Buttons__1xGrp']/button[text()='Заказать']");
+    //локаторы "Дальше" внизу страницы
+    private By orderNext = By.xpath(".//div[@class='Order_Buttons__1xGrp']/button[text()='Заказать']");
     private By orderDown2 = By.xpath(".//div[@class='Home_FinishButton__1_cWm']/*");
     //локатор для кукки
     private By cookie = By.className("App_CookieButton__3cvqF");
@@ -58,17 +52,21 @@ public class CheckOrder {
     public CheckOrder(WebDriver driver) {
         this.driver = driver;
     }
+
+    public void clickOrder(String button){
+        if(button.equals("Верх")) {
+            driver.findElement(orderUp).click();
+        } else driver.findElement(orderDown2).click();
+    }
     //Жмем "Заказать" вверху
-    public void clickOrderUp(){
+    public void clickOrd(){
         driver.findElement(orderUp).click();
     }
     //Жмем "Заказать" внизу
-    public void clickOrderDown(){
-        driver.findElement(orderDown).click();
+    public void clickNext(){
+        driver.findElement(orderNext).click();
     }
-    public void clickOrderDown2(){
-        driver.findElement(orderDown2).click();
-    }
+
     //закрываем куки
     public void clickCookie(){
         driver.findElement(cookie).click();
@@ -113,14 +111,13 @@ public class CheckOrder {
     public void pushRentalPeriod2(){
         driver.findElement(rentalPeriod2).click();
     }
-    //Кликаем "Черный" цвет
-    public void pushBlackColor(){
-        driver.findElement(blackColor).click();
+    //Выбор цвета
+    public void pushColor(String color){
+        if(color.equals("Черный")){
+            driver.findElement(blackColor).click();
+        }else driver.findElement(greyColor).click();
     }
-    //Кликаем "Серый" цвет
-    public void pushGreyColor(){
-        driver.findElement(greyColor).click();
-    }
+
     //Вводим текст комментария.
     public void setComment(String text){
         driver.findElement(comment).sendKeys(text);

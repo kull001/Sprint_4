@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class ImportantQuestions {
     private WebDriver driver;
+    final int i = 10;
     //локатор "Сколько стоит и как оплатить?"
     private By Question1 = By.id("accordion__heading-0");
     private By Answer1 = By.xpath(".//div[@id='accordion__panel-0']/p");
@@ -36,68 +37,58 @@ public class ImportantQuestions {
 
         this.driver = driver;
     }
-    public void clickQuestion1(){
+
+    //жмем на вопрос и получаем текст
+    public String getText(int number){
         WebElement element = driver.findElement(Question1);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(Question1).click();
+        String text = null;
+        switch (number){
+            case (1):
+                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(Question1).click();
+                text = driver.findElement(Answer1).getText();
+                break;
+            case (2):
+                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(Question2).click();
+                text = driver.findElement(Answer2).getText();
+                break;
+            case (3):
+                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(Question3).click();
+                text = driver.findElement(Answer3).getText();
+                break;
+            case (4):
+                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(Question4).click();
+                text = driver.findElement(Answer4).getText();
+                break;
+            case (5):
+                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(Question5).click();
+                text =  driver.findElement(Answer5).getText();
+                break;
+            case (6):
+                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(Question6).click();
+                text = driver.findElement(Answer6).getText();
+                break;
+            case (7):
+                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(Question7).click();
+                text = driver.findElement(Answer7).getText();
+                break;
+            case (8):
+                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+                driver.findElement(Question8).click();
+                text = driver.findElement(Answer8).getText();
+                break;
+        }
+        return text;
+
     }
-    public String getTextQuestion1(){
-        return driver.findElement(Answer1).getText();
-    }
-    public void clickQuestion2(){
-        WebElement element = driver.findElement(Question2);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(Question2).click();
-    }
-    public String getTextQuestion2(){
-        return driver.findElement(Answer2).getText();
-    }
-    public void clickQuestion3(){
-        WebElement element = driver.findElement(Question3);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(Question3).click();
-    }
-    public String getTextQuestion3(){
-        return driver.findElement(Answer3).getText();
-    }
-    public void clickQuestion4(){
-        WebElement element = driver.findElement(Question4);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(Question4).click();
-    }
-    public String getTextQuestion4(){
-        return driver.findElement(Answer4).getText();
-    }
-    public void clickQuestion5(){
-        WebElement element = driver.findElement(Question5);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(Question5).click();
-    }
-    public String getTextQuestion5(){
-        return driver.findElement(Answer5).getText();
-    }
-    public void clickQuestion6(){
-        WebElement element = driver.findElement(Question6);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(Question6).click();
-    }
-    public String getTextQuestion6(){
-        return driver.findElement(Answer6).getText();
-    }
-    public void clickQuestion7(){
-        WebElement element = driver.findElement(Question7);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(Question7).click();
-    }
-    public String getTextQuestion7(){
-        return driver.findElement(Answer7).getText();
-    }
-    public void clickQuestion8(){
-        WebElement element = driver.findElement(Question8);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(Question8).click();
-    }
-    public String getTextQuestion8(){
-        return driver.findElement(Answer8).getText();
-    }
+
+
+
+
 }
