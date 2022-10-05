@@ -4,6 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ImportantQuestions {
     private WebDriver driver;
@@ -38,55 +42,22 @@ public class ImportantQuestions {
         this.driver = driver;
     }
 
-    //жмем на вопрос и получаем текст
-    public String getText(int number){
-        WebElement element = driver.findElement(Question1);
-        String text = null;
-        switch (number){
-            case (1):
-                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-                driver.findElement(Question1).click();
-                text = driver.findElement(Answer1).getText();
-                break;
-            case (2):
-                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-                driver.findElement(Question2).click();
-                text = driver.findElement(Answer2).getText();
-                break;
-            case (3):
-                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-                driver.findElement(Question3).click();
-                text = driver.findElement(Answer3).getText();
-                break;
-            case (4):
-                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-                driver.findElement(Question4).click();
-                text = driver.findElement(Answer4).getText();
-                break;
-            case (5):
-                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-                driver.findElement(Question5).click();
-                text =  driver.findElement(Answer5).getText();
-                break;
-            case (6):
-                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-                driver.findElement(Question6).click();
-                text = driver.findElement(Answer6).getText();
-                break;
-            case (7):
-                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-                driver.findElement(Question7).click();
-                text = driver.findElement(Answer7).getText();
-                break;
-            case (8):
-                ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-                driver.findElement(Question8).click();
-                text = driver.findElement(Answer8).getText();
-                break;
-        }
-        return text;
+    By questions[] = {Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8};
+    By answers [] = {Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7,Answer8};
 
+    //жмем на вопрос и получаем текст
+    public String getText2(int number){
+        WebElement element = driver.findElement(Question1);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        driver.findElement(questions[number-1]).click();
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOfElementLocated(answers[number-1]));
+        return driver.findElement(answers[number-1]).getText();
     }
+
+
+
+
 
 
 

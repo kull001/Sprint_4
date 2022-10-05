@@ -50,7 +50,7 @@ public class ImportantQuestiondTests {
         //создаем объект страницы Вопросы о важном
         ImportantQuestions importantQuestions = new ImportantQuestions(driver);
         //кликаем на первый вопрос
-       Assert.assertEquals(importantQuestions.getText(numberQuestion), text);
+       Assert.assertEquals(importantQuestions.getText2(numberQuestion), text);
     }
 
     @After
